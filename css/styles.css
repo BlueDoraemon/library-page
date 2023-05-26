@@ -1,0 +1,23 @@
+:root{
+
+}
+button{
+    max-width: 200px;
+}
+body{
+    margin: 10vw;
+    padding: 0;
+    display:grid;
+    grid-template: min-content max-content / 1fr;
+    gap: 1vw;
+}
+
+.carousel{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-items: center;
+}
+.card{
+    height:200px;
+
+}
