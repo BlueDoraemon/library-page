@@ -31,7 +31,7 @@ const book3 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 
 
 
 
-//testing
+//Testing===============================
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
@@ -42,3 +42,6 @@ addBookToLibrary(createBook(`naming`, `authoring`, 223, false));
 console.log(library.length);
 console.log(book1.name);
 console.log(library[3]); // Expect naming authoring 223  false
+
+removeBook(3);
+console.log(library); // Expect 3 books
