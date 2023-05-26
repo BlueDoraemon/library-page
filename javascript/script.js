@@ -31,6 +31,33 @@ const book3 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 
 
 
 
+
+
+
+
+//Each card has a header name author pages and a read icon
+function createCard() {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.index = library.length - 1;
+
+    const name = document.createElement('h2');
+    const author = document.createElement('h3');
+    const pages = document.createElement('h3');
+
+    name.textContent = 'Name: test';
+    author.textContent = 'Author: test';
+    pages.textContent = 'pages';
+
+    card.append(name, author, pages);
+
+    const e = document.querySelector('.main');
+    e.append(card);
+    //placeholder for svg image for read or not
+
+    //No return value
+}
+
 //Testing===============================
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -45,3 +72,6 @@ console.log(library[3]); // Expect naming authoring 223  false
 
 removeBook(3);
 console.log(library); // Expect 3 books
+
+
+const b = createCard();
