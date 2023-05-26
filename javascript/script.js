@@ -5,15 +5,14 @@ function Book(name, author, pages, read){
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.hasRead() = () => {
+    this.hasRead = () => {
         (read) ? alert(`You've read it`) : alert(`You haven't read it`);
     };
 
 };
 
 function addBookToLibrary(book) {
-    library.push(this);
-    console.log(library);
+    library.push(book);
 }
 
 function removeBook(int) {
@@ -23,6 +22,7 @@ function removeBook(int) {
 
 function createBook(name, author, pages, read){
     const book = new Book(name, author, pages, read);
+    return book;
 }
 const book1 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 336,false);
 const book2 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 336,false);
@@ -36,4 +36,9 @@ addBookToLibrary(book1);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
 
-console.log(library);
+
+addBookToLibrary(createBook(`naming`, `authoring`, 223, false));
+
+console.log(library.length);
+console.log(book1.name);
+console.log(library[3]); // Expect naming authoring 223  false
