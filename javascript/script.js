@@ -57,6 +57,8 @@ function createCard(i) {
 
 // Form asks for user to input name author pages and a read icon
 function createForm(){
+    let inputs = [];
+
     const form = document.createElement('form');
     form.classList.add('forms');
 
@@ -64,53 +66,73 @@ function createForm(){
     nameLabel.for = 'name';
     nameLabel.textContent = 'Name:';
     const name = document.createElement('input');
-    name.type = 'text';
     name.id = 'name';
+    inputs.push(name);
+    // name.required = true;
 
     const authorLabel = document.createElement('label');
-    nameLabel.for = 'author';
-    nameLabel.textContent = 'Author:';
+    authorLabel.for = 'author';
+    authorLabel.textContent = 'Author:';
     const author = document.createElement('input');
-    author.type = 'text';
+    inputs.push(author);
     author.id = 'author';
 
     const pagesLabel = document.createElement('label');
-    nameLabel.for = 'pages';
-    nameLabel.textContent = 'No. of Pages:';
+    pagesLabel.for = 'pages';
+    pagesLabel.textContent = 'No. of Pages:';
     
     const pages = document.createElement('input');
-    pages.type = 'text';
+    inputs.push(pages);
     pages.id = 'pages';
 
     const read = document.createElement('input');
     read.type = 'checkbox';
     read.id = 'read';
     const readLabel = document.createElement('label');
-    nameLabel.for = 'read';
-    nameLabel.textContent = 'Have you read this book?';
+    readLabel.for = 'read';
+    readLabel.textContent = 'Have you read this book?';
 
     const submit = document.createElement('input');
     submit.type = 'submit';
     
-    // submit.textContent = ''
+    inputs.forEach((input) => {
+        input.setAttribute('required', true);
+        input.type = 'text';
+      });
 
-    form.append(nameLabel, name, authorLabel, author, pagesLabel, pages,read,readLabel, submit);
-    const e = document.querySelector('.window'); // change location other
-    e.append(form);
+    form.append(nameLabel, name, authorLabel, author, pagesLabel, pages,readLabel,read, submit);
+    const et = document.querySelector('.window'); // change location other
+    et.appendChild(form);
+    const x = document.createElement('button'); // close button
+    et.appendChild(x);
+    x.textContent = "X";
+
+    x.addEventListener('click',()=> {
+        et.removeChild(form);
+        et.removeChild(x);
+    })
+
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         let book = createBook(name.value, author.value, pages.value)
         addBookToLibrary(book);
         createCard(library.length-1);
-        console.log(library.length);
+        console.log(library.length);//testing
+        et.removeChild(form);
+        et.removeChild(x);
     })
 }
 
+
+const add = document.querySelector('#add');
+add.addEventListener('click', ()=>createForm());
+
+
 //Testing===============================
-const book1 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 1,true);
-const book2 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 2,false);
-const book3 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 3,false);
+const book1 = new Book(`The Midnight Library`,`Matt Haig`, 304,true);
+const book2 = new Book(`Educated: A Memoir`,`Tara Westover`, 400,false);
+const book3 = new Book(`The Alchemist`,`Paulo Coelho`, 208,false);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -133,4 +155,6 @@ createCard(2);//Expect show cards on main div
 
 // book1.hasRead(); // Alert youve read it
 
-createForm(); // Expect show a form on window div
+
+//hover over add button
+// createForm(); // Expect show a form on window div
