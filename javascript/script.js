@@ -25,7 +25,7 @@ function createBook(name, author, pages, read){
 }
 
 
-//Each card has a header name author pages and a read icon
+//Each card has a header name author pages, a read icon and a remove button
 function createCard(i) {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -44,9 +44,14 @@ function createCard(i) {
     card.append(name1, author1, pages1, remove1);
 
     const e = document.querySelector('.main');
-    e.append(card);
-    //placeholder for svg image for read or not
+    e.appendChild(card);
 
+    //placeholder for svg image for read or not
+    remove1.addEventListener('click', () =>{
+        e.removeChild(card);
+        removeBook(i);
+        console.log(library) //test expect less 1
+    })
     //No return value
 }
 
@@ -103,9 +108,9 @@ function createForm(){
 }
 
 //Testing===============================
-const book1 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 336,true);
-const book2 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 336,false);
-const book3 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 336,false);
+const book1 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 1,true);
+const book2 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 2,false);
+const book3 = new Book(`The Guest List: A Reese's Book Club Pick`,`Lucy Foley`, 3,false);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
