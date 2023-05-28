@@ -29,19 +29,28 @@ function createBook(name, author, pages, read){
 function createCard(i) {
     const card = document.createElement('div');
     card.classList.add('card');
-    card.dataset.index = library.length - 1;
+    card.dataset.index = i;
 
     const name1 = document.createElement('h2');
     const author1 = document.createElement('h3');
     const pages1 = document.createElement('h3');
     const remove1 = document.createElement('button');
+    const readPage = document.createElement('div');
+    readPage.classList.add('triangle');
+    const text = document.createElement('h5');
 
     name1.textContent = library[i].name;
     author1.textContent = 'by ' + library[i].author;
     pages1.textContent = library[i].pages + ' pages';
-    remove1.textContent = 'Delete'
+    remove1.textContent = 'Delete';
+    text.textContent = 'Finished? -->'
+    if (library[i].read) {
+        card.classList.add('read');
+        text.textContent = `You've read it! Undo? -->`;
+    }
+  
 
-    card.append(name1, author1, pages1, remove1);
+    card.append(name1, author1, pages1, remove1, readPage, text);
 
     const e = document.querySelector('.main');
     e.appendChild(card);
@@ -51,6 +60,19 @@ function createCard(i) {
         e.removeChild(card);
         removeBook(i);
         console.log(library) //test expect less 1
+    })
+
+    //add click for read unread;
+    readPage.addEventListener('click', (e) =>{
+        card.classList.toggle('read');
+        if (library[i].read) {
+            text.textContent = `Finished? -->`;
+            library[i].read = false;
+        } 
+        else {
+            library[i].read = true;
+            text.textContent = `You've read it! Undo? -->`;
+        }
     })
     //No return value
 }
@@ -115,7 +137,7 @@ function createForm(){
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        let book = createBook(name.value, author.value, pages.value)
+        let book = createBook(name.value, author.value, pages.value, read.checked)
         addBookToLibrary(book);
         createCard(library.length-1);
         console.log(library.length);//testing

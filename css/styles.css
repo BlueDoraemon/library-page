@@ -88,7 +88,7 @@ body{
 }
 .window{
 z-index: 1;
-box-shadow: rgba(255, 115, 0, 0.25) 0px 14px 28px, rgba(255, 115, 0, 0.22) 0px 10px 10px;
+box-shadow: rgba(255, 115, 0, 0.25) 0px 14px 14px, rgba(255, 115, 0, 0.22) 0px 10px 10px;
 display:flex;
 justify-content: space-between;
 /* gap: 10px; */
@@ -116,5 +116,32 @@ form{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     padding: 1vw;
     border-radius: 20px;
+    position: relative;
+    transform:none;
+
+    transition-duration: 0.6s;
 
 }
+
+.read{
+    transform:translateY(-180deg);
+    border: 3px solid black;
+}
+.triangle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid var(--highlightcolor);
+    border-right: 20px solid var(--highlightcolor);
+  }
+  .card h5 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
