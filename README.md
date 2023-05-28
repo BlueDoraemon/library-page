@@ -6,7 +6,7 @@ Library of Alexandria is a book tracking web application built on HTML5, CSS, an
 
 ## Installation
 
-A live deployment of Library of Alexandria is available on GitHub Pages. You can access the application by visiting [Library of Alexandria](https://example.com).
+A live deployment of Library of Alexandria is available on GitHub Pages. You can access the application by visiting [Library of Alexandria](https://bluedoraemon.github.io/library-page/).
 
 If you prefer to run the application locally or make modifications to the source code, follow the steps below:
 
