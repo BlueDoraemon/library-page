@@ -1,15 +1,27 @@
 let library = []; // array of books
 
-function Book(name, author, pages, read){
+// function Book(name, author, pages, read){
+//     this.name = name;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+//     this.hasRead = () => {
+//         (read) ? alert(`You've read it`) : alert(`You haven't read it`);
+//     };
+
+// };
+class Book{
+    constructor(name,author,pages,read){
     this.name = name;
     this.author = author;
     this.pages = pages;
-    this.read = read;
-    this.hasRead = () => {
+    this.read = read; 
+    }
+    hasRead(){
         (read) ? alert(`You've read it`) : alert(`You haven't read it`);
-    };
+    }
 
-};
+}
 
 function addBookToLibrary(book) {
     library.push(book);
